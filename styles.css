@@ -1,0 +1,31 @@
+body {
+    text-align: center;
+    background-color: #0f2c67;
+}
+
+h1 {
+    color: #faedf0;
+    font-size: 64px;
+}
+
+h2 {
+    color: #df3434;
+    font-size: 40px;
+}
+
+.text-muted {
+    color: #df3434 !important;
+}
+
+h3 {
+    margin-top: 30px;
+    font-size: 35px;
+}
+
+.card {
+    background-color: #f4e185;
+    margin: 100px auto;
+    height: 400px;
+    width: 800px !important;
+    border-radius: 20px;
+}
