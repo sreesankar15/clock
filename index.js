@@ -1,35 +1,30 @@
 // jshint esversion:6
 var currentdate = new Date();
-var datetime = currentdate.getDate() + "/" + (currentdate.getMonth() + 1) + "/" + currentdate.getFullYear() + " @ " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
-console.log(datetime);
 
-var superScript = ["<sup>st</sup>", "<sup>nd</sup>", "<sup>rd</sup>", "<sup>th</sup>"];
-var months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+$(document).ready(function () {
+    setTimeout(function () {
+        $("body").css("opacity", "1");
+    }, 1000);
 
-var date = currentdate.getDate();
-var dateSuperScript = "";
-var month = months[currentdate.getMonth()];
-var year = currentdate.getFullYear();
-
-switch (date) {
-    case 1:
-        dateSuperScript = superScript[0];
-        break;
-    case 2:
-        dateSuperScript = superScript[1];
-        break;
-    case 3:
-        dateSuperScript = superScript[2];
-        break;
-    default:
-        dateSuperScript = superScript[3];
-        break;
-}
-
-$(".card-title").html(date + dateSuperScript + " " + month + " " + year);
+});
 
 setInterval(function () {
     currentdate = new Date();
-    let time = currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
-    $(".card-subtitle").text(time);
+    let hour = "<span class=\"hour\">" + currentdate.getHours() + "</span>";
+    let minute = "<span class=\"minute\">" + currentdate.getMinutes() + "</span>";
+    let second = "<span class=\"second\">" + currentdate.getSeconds() + "</span>";
+
+    if (currentdate.getHours().length < 2) {
+        hour = "<span class=\"hour\">" + "0" + currentdate.getHours() + "</span>";
+    }
+    if (currentdate.getMinutes().toString().length < 2) {
+        minute = "<span class=\"hour\">" + "0" + currentdate.getMinutes() + "</span>";
+    }
+    if (currentdate.getSeconds().toString().length < 2) {
+        second = "<span class=\"hour\">" + "0" + currentdate.getSeconds() + "</span>";
+    }
+
+    let time = hour + ":" + minute + ":" + second;
+
+    $(".card-subtitle").html(time);
 }, 1000);
